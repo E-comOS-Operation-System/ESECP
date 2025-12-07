@@ -1,0 +1,33 @@
+# ESMCP Server Configuration
+
+server:
+  port: 2525
+  host: 0.0.0.0
+  maxConnections: 1000
+  connectionTimeout: 30000
+
+microkernel:
+  messageTimeout: 10000
+  threadPoolSize: 50
+
+services:
+  authentication:
+    sessionTimeout: 3600000  # 1 hour in milliseconds
+    maxSessions: 10000
+    
+  storage:
+    maxMailsPerUser: 1000
+    storageQuota: 104857600  # 100MB in bytes
+    
+  transfer:
+    queueSize: 10000
+    retryAttempts: 3
+    retryDelay: 5000
+    
+  protocol:
+    maxCommandLength: 8192
+    idleTimeout: 300000  # 5 minutes
+
+logging:
+  level: INFO
+  file: logs/esmcp.log
